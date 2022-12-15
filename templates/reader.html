@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block reader %}
+    <section id="reader-section">
+        <h1>Welcome reader <span style="font-weight: bolder;">{{ readername }}</span></h1>
+        <form action="/searchDoc"> 
+            <input name="search">
+            <button>Submit</button>
+        </form>
+        <div id="sign-out">
+            <a href="/sign_out">sign out</h1>
+        </div>
+    </section>
+{% endblock %}

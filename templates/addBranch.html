@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block addReader %}
+    <section id="add-reader">
+        <h1>Please enter the details and submit to add branch</h1>
+        <form method="POST" action="/addBranch">
+            <input name="branch-name" placeholder="Branch Name" type="text"/>
+            <input name="branch-address" placeholder="Branch  Address" type="text"/>
+            <button>Submit</button>
+        </form>
+
+        <div id="reader-details">
+            <h1>Existing branches in the db.</h1>
+            <div class="reader">
+                <h1> BID </h1>
+                <h1> BRANCH NAME </h1>
+                <h1> BRANCH ADDRESS </h1>
+            </div>
+            {% for branch in branches %}
+                <div class="reader">
+                    <h1>{{ branch['BID'] }}</h1>
+                    <h1>{{ branch['LNAME'] }}</h1>
+                    <h1>{{ branch['LOCATION'] }}</h1>
+                </div>
+            {% endfor%}
+        </div>
+
+        <div id="back">
+            <a href="/adminLogin">Back</a>
+        </div>
+    </section>
+{% endblock%}

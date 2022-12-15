@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block admin %}
+<section id="admin-page">
+    <h1>Welcome to your page, {{ username }}</h1>
+
+    <div id="options">
+        <div id="add-reader-option">
+            <a href="/adminLogin/addReader">Add Reader</a>
+        </div>
+        <div id="add-branch">
+            <a href = "/adminLogin/addBranch">Add Branch</a>
+        </div>
+        <div id="add-publisher">
+            <a href = "/adminLogin/addPublisher">Add Publisher</a>
+        </div>
+        <div id="add-document">
+            <a href = "/adminLogin/addDocument">Add Document</a>
+        </div>
+    </div>
+
+
+
+    <div id="sign-out">
+        <a href="/sign_out">sign out</h1>
+    </div>
+</section>
+
+{% endblock %}

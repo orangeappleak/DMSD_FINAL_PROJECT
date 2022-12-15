@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block index %}
+
+
+<script>
+	function adminLogin(username, password) {
+		var admin_username = document.querySelector("#login-page #admin-username").value;
+		var admin_password = document.querySelector("#login-page #admin-password").value;
+
+		console.log("entered username = " + admin_username);
+		console.log("entered password = " + admin_password);
+	}
+
+	function activate_login(){
+		document.querySelector("#login-page").classList.toggle("active");
+	}
+
+	function activate_reader_login(){
+		document.querySelector("#reader-login").classList.toggle("active");
+	}
+</script>
+
+
+<section id="main-page">
+	<h1>{% block title %} Welcome to the public library {% endblock %}</h1>
+	<div class="block" id="reader-block" onclick="activate_reader_login()">
+		<h1>READER</h1>
+	</div>
+	<div class="block" id="admin-block" onclick="activate_login()">
+		<h1>ADMIN</h1>
+	</div>
+
+	<div id="login-page">
+		<div onclick="activate_login()" id="close">
+			<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABfElEQVRoge2ZPU7DMBxHHx8bhSPQchi4B51gSZmpuAbQi3CfqBV7OycpQxwpsmLHseMPJD/pvzS2/HtO4qQxZDKZTOqsgB2wByrg7LkqMda3GNuJJ+AUILSqTsCjbfiHyOG7OgJLG4FdAuG7+rIR2CcQvKtSFfJCI1ABVxOlfVED10MHdAJnP1msGcx6GTrF3GSB2MwhsAUWwBvQGLRvgI3o8zHD+EpMl7hFr8+adsVQta1Fm467CeN4EyikfioJOTy0ZyK6QAO8Sn2fJYkGeDEUDS4wJjFHeO8CqktkrfhtavggAqozMUf4YAI6CZfwSgFfD7KhAa1m0TWEzezLN2wfeXVK6hL61zexbqk0eU5EFTBZ54faTJXwJuDyKlGkIHBjEF4lcZuCwLuQ2IyE70sUos/WVSD/J45NFoiNTqAOlmIcZRadwK+HILYcVAd0Aj8egthilWVFOp/X720EoN1cOEYOb73B0bGk/T5fEm6LqQQ+cZj5TCaTCcMfmk6hrxx3C+YAAAAASUVORK5CYII=">
+		</div>
+		<form method="POST" action="/adminLogin" autocomplete="off">
+			<h2>Enter the following details</h2>
+			<input id="admin-username" placeholder="admin" name="admin-username" type="text">
+			<input id="admin-password" placeholder="password" name="admin-password" type="password">
+			<button type="submit">Submit</button>
+		</form>
+	</div>
+
+	<div id="reader-login">
+		<div onclick="activate_reader_login()" id="close">
+			<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABfElEQVRoge2ZPU7DMBxHHx8bhSPQchi4B51gSZmpuAbQi3CfqBV7OycpQxwpsmLHseMPJD/pvzS2/HtO4qQxZDKZTOqsgB2wByrg7LkqMda3GNuJJ+AUILSqTsCjbfiHyOG7OgJLG4FdAuG7+rIR2CcQvKtSFfJCI1ABVxOlfVED10MHdAJnP1msGcx6GTrF3GSB2MwhsAUWwBvQGLRvgI3o8zHD+EpMl7hFr8+adsVQta1Fm467CeN4EyikfioJOTy0ZyK6QAO8Sn2fJYkGeDEUDS4wJjFHeO8CqktkrfhtavggAqozMUf4YAI6CZfwSgFfD7KhAa1m0TWEzezLN2wfeXVK6hL61zexbqk0eU5EFTBZ54faTJXwJuDyKlGkIHBjEF4lcZuCwLuQ2IyE70sUos/WVSD/J45NFoiNTqAOlmIcZRadwK+HILYcVAd0Aj8egthilWVFOp/X720EoN1cOEYOb73B0bGk/T5fEm6LqQQ+cZj5TCaTCcMfmk6hrxx3C+YAAAAASUVORK5CYII=">
+		</div>
+		<form method="POST" action="/readerLogin" autocomplete="off">
+			<h2>Enter the following details</h2>
+			<input id="reader-cardid" placeholder="cardid" name="reader-cardid" type="text">
+			<button type="submit">Submit</button>
+		</form>
+	</div>
+</section>
+{% endblock %}

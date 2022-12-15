@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block addReader %}
+    <section id="add-reader">
+        <h1>Please enter the details and submit to add reader</h1>
+        <form method="POST" action="/addReader">
+            <input name="reader-name" placeholder="Reader Name" type="text"/>
+            <input name="reader-address" placeholder="Reader Address" type="text"/>
+            <input name="reader-phoneno" placeholder="Reader Mobile" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" />
+            <button>Submit</button>
+        </form>
+
+        <div id="reader-details">
+            <h1>Existing readers in the db.</h1>
+            <div class="reader">
+                <h1> RID </h1>
+                <h1> RNAME </h1>
+                <h1> RADDRESS </h1>
+                <h1> PHONE NUMBER </h1>
+            </div>
+            {% for reader in readers %}
+                <div class="reader">
+                    <h1>{{ reader['RID'] }}</h1>
+                    <h1>{{ reader['RNAME'] }}</h1>
+                    <h1>{{ reader['RADDRESS'] }}</h1>
+                    <h1>{{ reader['PHONE_NO'] }}</h1>
+                </div>
+            {% endfor%}
+        </div>
+
+        <div id="back">
+            <a href="/adminLogin">Back</a>
+        </div>
+    </section>
+{% endblock%}

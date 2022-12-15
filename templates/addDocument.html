@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block addReader %}
+    <section id="add-reader">
+        <h1>Please enter the details and submit to add document</h1>
+        <form method="POST" action="/addDocument">
+            <input name="title" placeholder="document Name" type="text"/>
+            <input name="pdate" placeholder="published  date" type="date"/>
+            <input name="pid" placeholder="published by" type="number"/>
+            <button>Submit</button>
+        </form>
+
+        <div id="reader-details">
+            <h1>Existing documents in the db.</h1>
+            <div class="reader">
+                <h1> DOC ID </h1>
+                <h1> DOCUMENT NAME </h1>
+                <h1> PUBLISHED ON</h1>
+                <h1> PUBLISHER ID</h1>
+            </div>
+            {% for doc in documents %}
+                <div class="reader">
+                    <h1>{{ doc['DOCID'] }}</h1>
+                    <h1>{{ doc['TITLE'] }}</h1>
+                    <h1>{{ doc['PDATE'] }}</h1>
+                    <h1>{{ doc['PUBID'] }}</h1>
+                </div>
+            {% endfor%}
+        </div>
+
+        <div id="back">
+            <a href="/adminLogin">Back</a>
+        </div>
+    </section>
+{% endblock%}

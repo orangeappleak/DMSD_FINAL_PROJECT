@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block addReader %}
+    <section id="add-reader">
+        <h1>Please enter the details and submit to add publisher</h1>
+        <form method="POST" action="/addPublisher">
+            <input name="pub-name" placeholder="Publisher Name" type="text"/>
+            <input name="pub-address" placeholder="Publisher  Address" type="text"/>
+            <button>Submit</button>
+        </form>
+
+        <div id="reader-details">
+            <h1>Existing branches in the db.</h1>
+            <div class="reader">
+                <h1> PUB ID </h1>
+                <h1> PUB NAME </h1>
+                <h1> PUB ADDRESS </h1>
+            </div>
+            {% for pub in publishers %}
+                <div class="reader">
+                    <h1>{{ pub['PUBLISHERID'] }}</h1>
+                    <h1>{{ pub['PUBNAME'] }}</h1>
+                    <h1>{{ pub['ADDRESS'] }}</h1>
+                </div>
+            {% endfor%}
+        </div>
+
+        <div id="back">
+            <a href="/adminLogin">Back</a>
+        </div>
+    </section>
+{% endblock%}
